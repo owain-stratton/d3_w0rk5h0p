@@ -4,8 +4,11 @@
   "private": true,
   "dependencies": {
     "d3": "^4.7.3",
+    "d3-array": "^1.1.1",
     "d3-dsv": "^1.0.5",
     "d3-request": "^1.0.2",
+    "d3-scale": "^1.0.5",
+    "d3-shape": "^1.0.6",
     "normalize.css": "^5.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"

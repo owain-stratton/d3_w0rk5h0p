@@ -3,7 +3,7 @@ import { csv } from 'd3-request';
 
 import './ChartWidget.css';
 
-import dataCSV from '../data/birthdeathrates.csv';
+import dataCSV from '../data/BE0701AA.csv';
 
 import ScatterPlot from './ScatterPlot';
 
@@ -21,23 +21,29 @@ export default class ChartWidget extends Component {
    componentWillMount() {
       this._loadData()
          .then(() => this.setState({ isLoaded: true }))
-         .catch(() => this.setState({ loadError: true }));
+         // .catch(() => this.setState({ loadError: true }));
    }
 
    _loadData() {
       return new Promise((resolve, reject) => {
          csv(dataCSV, (error, data) => {
-            if (error) {
-               this.setState({ loadError: true });
-            }
+            if (error) throw error;
 
-            const mappedData = data.map((d, i) => {
-               return Object.assign({}, d, { x: +d.birth, y: +d.death });
+            const mappedData = data.columns.slice(1).map((header) => {
+               return Object.assign({}, {
+                  id: header,
+                  values: data.map((d) => {
+                     return {
+                        date: +d.year,
+                        fertility: +d[header]
+                     }
+                  }),
+               });
             });
 
             resolve(this.setState({ data: mappedData }));
-         })
-      })
+         });
+      });
    }
 
    _renderError() {
@@ -52,7 +58,12 @@ export default class ChartWidget extends Component {
 
       const plot = !this.state.isLoaded
          ? null
-         : <ScatterPlot data={this.state.data} />
+         : <ScatterPlot
+            data={this.state.data}
+            width={900}
+            height={500}
+            padding={30}
+           />
 
       return (
          <div className="chart-widget--container">
