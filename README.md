@@ -25,7 +25,7 @@ $ npm start
 # Then navigate in the browser to http://localhost:3000
 ```
 
-
+## Technology Introduction
 ### D3.js
 
 ![Collision example](https://gist.githubusercontent.com/mbostock/3231298/raw/0e521edcd195b69da573a718c166710d6b71e7d9/thumbnail.png)
