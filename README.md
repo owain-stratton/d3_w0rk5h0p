@@ -50,3 +50,24 @@ Seriously though, D3 is fantastic at creating simple or vastly complex visualiza
 This workshop aims to give you an introduction to using D3 and React to make a simple line chart:
 
 ![Line chart screenshot](./screenshot.png)
+
+### Steps
+
+1. Import the fertility rate data from `data/BE0701AA.csv` and map it to convenient data structure using for visualizing data for *males* and *females*.
+
+2. Pass the data imported to an **svg** chart and render points as **circle** elements for each gender.
+
+3. Generate an **svg path** elements to show the trend of fertility rate changes from 1970 to 2015.
+
+4. Add *axes*, a *legend* and *color* to the chart make it simpler for users to interpret the data.
+
+#### Possible Homework/Improvements/Fixes
+
+1. X axis currently only shows **one year 1970**.
+2. Animate the chart as the component mounts, hint: use `componentDidMount()` lifecycle method.
+3. Add mouse events to show the user a tooltip when they interact with the chart, hint: add eventListeners to component lifecycle methods.
+
+
+### Data
+
+The data is courtesy of the open data database from **SCB**. You can find more data here: http://www.statistikdatabasen.scb.se/pxweb/en/ssd/
