@@ -1,0 +1,10 @@
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.xy-axis text {
+  font-size: 11px;
+  font-family: 'Roboto Condensed', sans-serif;
+}

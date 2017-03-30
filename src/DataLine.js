@@ -1,27 +1,40 @@
 import React, { Component } from 'react';
 
-import { line, curveBasis } from 'd3-shape';
+import { line } from 'd3-shape';
 
 export default class DataPoints extends Component {
    render() {
 
       const drawLine = line()
-         .curve(curveBasis)
-         .x((d) => this.props.xScale(d.x))
-         .y((d) => this.props.yScale(d.male));
+         .x((d) => this.props.xScale(d.date))
+         .y((d) => this.props.yScale(d.fertility));
 
       return (
          <g>
-            <path
-               id={this.props.data.male}
-               d={drawLine(this.props.data)}
-               style={{
-                     stroke: '#222',
-                     strokeWidth: '2px',
-                     fill: 'none',
-                     opacity: 0.2
-               }}
-            />
+            {this.props.data.map((val, idx) => (
+               <g key={idx}>
+                  <path
+                     id={val.id}
+                     d={drawLine(val.values)}
+                     stroke={this.props.colorScale(val.id)}
+                     style={{
+                        strokeWidth: '2px',
+                        fill: 'none',
+                        opacity: 1
+                     }}
+                  />
+                  <text
+                     transform={`translate(
+                        ${this.props.xScale(val.values[val.values.length - 1].date)},
+                        ${this.props.yScale(val.values[val.values.length - 1].fertility)}
+                     )`}
+                     x={8}
+                     dy={'0.35rem'}
+                  >
+                     {val.id.charAt(0).toUpperCase() + val.id.slice(1)}
+                  </text>
+               </g>
+            ))}
          </g>
       );
    }

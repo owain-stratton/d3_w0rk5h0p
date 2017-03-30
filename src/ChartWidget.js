@@ -5,7 +5,7 @@ import './ChartWidget.css';
 
 import dataCSV from '../data/BE0701AA.csv';
 
-import ScatterPlot from './ScatterPlot';
+import PlotSeries from './PlotSeries';
 
 export default class ChartWidget extends Component {
 
@@ -13,7 +13,7 @@ export default class ChartWidget extends Component {
       super();
       this.state = {
          loadError: false,
-         data: {},
+         data: [],
          isLoaded: false
       }
    }
@@ -21,7 +21,7 @@ export default class ChartWidget extends Component {
    componentWillMount() {
       this._loadData()
          .then(() => this.setState({ isLoaded: true }))
-         // .catch(() => this.setState({ loadError: true }));
+         .catch(() => this.setState({ loadError: true }));
    }
 
    _loadData() {
@@ -56,9 +56,9 @@ export default class ChartWidget extends Component {
 
    render() {
 
-      const plot = !this.state.isLoaded
+      const plotseries = !this.state.isLoaded
          ? null
-         : <ScatterPlot
+         : <PlotSeries
             data={this.state.data}
             width={900}
             height={500}
@@ -67,7 +67,7 @@ export default class ChartWidget extends Component {
 
       return (
          <div className="chart-widget--container">
-            {!this.state.loadError ? plot : this._renderError()}
+            {!this.state.loadError ? plotseries : this._renderError()}
          </div>
       );
    }

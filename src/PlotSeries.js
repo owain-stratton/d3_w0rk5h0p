@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 
-import { scaleLinear, scaleTime } from 'd3-scale';
-import { min, max, extent } from 'd3-array';
+import {
+   scaleLinear,
+   scaleTime,
+   scaleOrdinal,
+   schemeCategory10
+} from 'd3-scale';
+
+import { min, max } from 'd3-array';
 
 import DataPoints from './DataPoints';
-// import DataLine from './DataLine';
-// import XYAxis from './XYAxis';
+import DataLine from './DataLine';
+import XYAxis from './XYAxis';
 
-export default class ScatterPlot extends Component {
+export default class PlotSeries extends Component {
 
    getXScale() {
       const xMax = max(this.props.data, (d) => max(d.values, (v) => v.date));
@@ -33,9 +39,15 @@ export default class ScatterPlot extends Component {
          ]);
    }
 
+   getColorScale() {
+      return scaleOrdinal(schemeCategory10)
+         .domain(this.props.data.map((d) => d.id));
+   }
+
    render() {
       const xScale = this.getXScale();
       const yScale = this.getYScale();
+      const colorScale = this.getColorScale();
 
       return (
          <svg
@@ -46,18 +58,20 @@ export default class ScatterPlot extends Component {
             <DataPoints
                xScale={xScale}
                yScale={yScale}
+               colorScale={colorScale}
                data={this.props.data}
             />
-            {/* <DataLine
+            <DataLine
                xScale={xScale}
                yScale={yScale}
+               colorScale={colorScale}
                data={this.props.data}
-            /> */}
-            {/* <XYAxis
+            />
+            <XYAxis
                xScale={xScale}
                yScale={yScale}
-               data={this.props.data}
-            /> */}
+               {...this.props}
+            />
          </svg>
       );
    }
