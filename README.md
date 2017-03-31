@@ -51,7 +51,7 @@ This workshop aims to give you an introduction to using D3 and React to make a s
 
 ![Line chart screenshot](./screenshot.png)
 
-### Steps
+## Tutorial Steps
 
 1. Import the fertility rate data from `data/BE0701AA.csv` and map it to convenient data structure using for visualizing data for *males* and *females*.
 
@@ -63,9 +63,9 @@ This workshop aims to give you an introduction to using D3 and React to make a s
 
 #### Possible Homework/Improvements/Fixes
 
-1. X axis currently only shows **one year 1970**.
-2. Animate the chart as the component mounts, hint: use `componentDidMount()` lifecycle method.
-3. Add mouse events to show the user a tooltip when they interact with the chart, hint: add eventListeners to component lifecycle methods.
+1. X axis currently only shows one year **1970** for each year (konstigt :frowning:).
+2. Animate the chart as the component mounts **hint**: use `componentDidMount()` lifecycle method.
+3. Add mouse events to show the user a tooltip when they interact with the chart **hint**: add eventListeners to component lifecycle methods.
 4. Add some ancillary data to give the fertility data more context. Perhaps there were some political decisions made that caused rates to rise and fall.
 
 
