@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { line } from 'd3-shape';
 
-export default class DataPoints extends Component {
+export default class DataLine extends Component {
    render() {
 
       const drawLine = line()
