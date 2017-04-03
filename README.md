@@ -22,7 +22,7 @@ The project has a number of **npm** scripts available from **create-react-app** 
 To start the **Webpack-dev-server** run the following command:
 ```bash
 $ npm start
-# Then navigate in the browser to http://localhost:3000
+# Then in the browser navigate to http://localhost:3000
 ```
 
 ## Technology Introduction
